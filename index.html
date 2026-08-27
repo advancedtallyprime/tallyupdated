@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GTEC Jain Keerti Education | Course Portal</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+      /* ==========================================================================
+         Google Font & Root Variables
+         ========================================================================== */
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+      :root {
+        --primary: #0f172a;         /* Deep slate for text/headings */
+        --primary-light: #0284c7;   /* Modern light blue accent */
+        --primary-hover: #0369a1;   /* Darker blue hover state */
+        --primary-subtle: #f0f9ff;  /* Soft light blue tint */
+        --secondary: #334155;       /* Muted slate */
+        --bg-body: #f8fafc;         /* Background canvas */
+        --bg-white: #ffffff;
+        --text-primary: #1e293b;
+        --text-secondary: #475569;  /* Muted slate gray */
+        --text-muted: #94a3b8;     /* Light grayish blue */
+        --border-color: #e2e8f0;    /* Minimalist light border */
+
+        /* Shadows & Radius */
+        --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.05);
+        --shadow-md: 0 4px 12px rgba(2, 132, 199, 0.08);
+        --shadow-lg: 0 10px 25px rgba(15, 23, 42, 0.12);
+
+        --radius-sm: 8px;
+        --radius-md: 12px;
+        --radius-lg: 16px;
+
+        --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        --transition: all 0.25s ease;
+      }
+
+      /* ==========================================================================
+         Reset & Base Styles
+         ========================================================================== */
+      *, *::before, *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        height: 100%;
+      }
+
+      body {
+        font-family: var(--font-family);
+        background: var(--bg-body);
+        color: var(--text-primary);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      /* ==========================================================================
+         Header Section
+         ========================================================================== */
+      .main-header {
+        background: var(--bg-white);
+        border-bottom: 1px solid var(--border-color);
+        text-align: center;
+        padding: 2.5rem 1.5rem;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .main-header h1 {
+        font-size: clamp(1.6rem, 4vw, 2.2rem);
+        color: var(--primary);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .main-header p {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        margin-top: 0.25rem;
+      }
+
+      .main-header p i {
+        color: var(--primary-light);
+        font-style: normal;
+        font-weight: 600;
+      }
+
+      .main-header .badge-title {
+        display: inline-block;
+        margin-top: 1rem;
+        padding: 0.35rem 1.25rem;
+        background-color: var(--primary-subtle);
+        color: var(--primary-light);
+        border: 1px solid #bae6fd;
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: 600;
+      }
+
+      /* ==========================================================================
+         Main Layout Container
+         ========================================================================== */
+      .container {
+        max-width: 1100px;
+        width: 100%;
+        margin: 2.5rem auto;
+        padding: 0 1.5rem;
+        flex: 1;
+      }
+
+      .section-heading {
+        font-size: 1.5rem;
+        color: var(--primary);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+
+      /* ==========================================================================
+         Course Cards Grid
+         ========================================================================== */
+      .course-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3.5rem;
+      }
+
+      .course-card {
+        background: var(--bg-white);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-lg);
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        position: relative;
+      }
+
+      .course-card:hover {
+        transform: translateY(-4px);
+        border-color: #bae6fd;
+        box-shadow: var(--shadow-md);
+      }
+
+      .card-header-icon {
+        width: 48px;
+        height: 48px;
+        background-color: var(--primary-subtle);
+        color: var(--primary-light);
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.35rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .card-badge {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        padding: 0.25rem 0.6rem;
+        border-radius: 4px;
+        background-color: #f1f5f9;
+        color: var(--text-secondary);
+      }
+
+      .course-card h2 {
+        font-size: 1.3rem;
+        color: var(--primary);
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+      }
+
+      .course-card p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.75rem;
+        flex: 1; /* Keeps buttons aligned horizontally */
+      }
+
+      /* Primary Button Styling */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background-color: var(--primary-light);
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: var(--radius-sm);
+        transition: var(--transition);
+      }
+
+      .btn:hover,
+      .btn:focus-visible {
+        background-color: var(--primary-hover);
+        box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+        outline: none;
+      }
+
+      /* ==========================================================================
+         Comparison Table
+         ========================================================================== */
+      table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        background: var(--bg-white);
+        border: 1px solid var(--border-color);
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+        margin-bottom: 3.5rem;
+      }
+
+      th, td {
+        padding: 1rem 1.25rem;
+        text-align: left;
+        font-size: 0.92rem;
+      }
+
+      th {
+        background-color: #f1f5f9;
+        color: var(--primary);
+        font-weight: 600;
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      td {
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-secondary);
+      }
+
+      tbody tr:last-child td {
+        border-bottom: none;
+      }
+
+      tbody tr:nth-child(even) td {
+        background-color: #f8fafc;
+      }
+
+      tbody tr:hover td {
+        background-color: var(--primary-subtle);
+      }
+
+      td.adv {
+        color: var(--primary-hover);
+        font-weight: 500;
+      }
+
+      /* ==========================================================================
+         Footer
+         ========================================================================== */
+      .notes-footer {
+        background: var(--bg-white);
+        color: var(--text-secondary);
+        border-top: 1px solid var(--border-color);
+        padding: 1.5rem 1rem;
+        text-align: center;
+        margin-top: auto;
+        font-size: 0.88rem;
+      }
+
+      .notes-footer strong {
+        color: var(--primary);
+      }
+
+      /* Responsive Adjustments */
+      @media (max-width: 640px) {
+        .container {
+          margin: 1.5rem auto;
+          padding: 0 1rem;
+        }
+
+        .course-card {
+          padding: 1.5rem;
+        }
+
+        .card-badge {
+          top: 1.5rem;
+          right: 1.5rem;
+        }
+
+        table {
+          display: block;
+          overflow-x: auto;
+          white-space: nowrap;
+        }
+      }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="main-header">
+        <h1>GTEC Jain Keerti Education</h1>
+        <p>Global Leader in <i>IT</i> Education</p>
+        <span class="badge-title">Learning &amp; Notes Portal</span>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container">
+
+        <h2 class="section-heading">Featured Courses</h2>
+
+        <!-- Course Cards Section -->
+        <section class="course-section">
+
+            <!-- Basic Tally Card -->
+            <article class="course-card">
+                <div class="card-header-icon">
+                    <i class="fa-solid fa-calculator"></i>
+                </div>
+                <span class="card-badge">Accounting</span>
+                <h2>Basic Tally Prime</h2>
+                <p>
+                    Perfect for beginners. Covers accounting fundamentals,
+                    vouchers, inventory, cost centers, and essential bookkeeping operations.
+                </p>
+                <a href="/Pages/basic-tally.html" class="btn">
+                    Explore Course <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <!-- Advanced Tally Card -->
+            <article class="course-card">
+                <div class="card-header-icon">
+                    <i class="fa-solid fa-file-invoice-dollar"></i>
+                </div>
+                <span class="card-badge">Accounting</span>
+                <h2>Advanced Tally Prime</h2>
+                <p>
+                    Professional program including GST, TDS, Payroll,
+                    BOM, POS, Audit Trail, MIS Reports, and advanced financial management.
+                </p>
+                <a href="/Pages/advanced-tally.html" class="btn">
+                    Explore Course <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <!-- Graphic Design Card -->
+            <article class="course-card">
+                <div class="card-header-icon">
+                    <i class="fa-solid fa-palette"></i>
+                </div>
+                <span class="card-badge">Design</span>
+                <h2>Graphic Design</h2>
+                <p>
+                    Master visual design skills using Photoshop, Illustrator, and CorelDRAW. Learn branding, vector illustration, and layout design.
+                </p>
+                <a href="/Pages/graphic-design.html" class="btn">
+                    Explore Course <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <!-- Web Design & Development Card -->
+            <article class="course-card">
+                <div class="card-header-icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <span class="card-badge">Development</span>
+                <h2>Web Design &amp; Dev</h2>
+                <p>
+                    Build modern, responsive websites with HTML5, CSS3, JavaScript, and UI frameworks like Bootstrap &amp; Tailwind CSS.
+                </p>
+                <a href="/Pages/web-design.html" class="btn">
+                    Explore Course <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </article>
+
+            <!-- Python Programming Card -->
+            <article class="course-card">
+                <div class="card-header-icon">
+                    <i class="fa-brands fa-python"></i>
+                </div>
+                <span class="card-badge">Programming</span>
+                <h2>Python Programming</h2>
+                <p>
+                    Learn core Python concepts, data structures, OOPs, file processing, and basic automation or data analysis techniques.
+                </p>
+                <a href="/Pages/python.html" class="btn">
+                    Explore Course <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </article>
+
+        </section>
+
+        <!-- Tally Comparison Section -->
+        <h2 class="section-heading">Tally Modules Comparison</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Feature / Module</th>
+                    <th>Basic Tally Prime</th>
+                    <th>Advanced Tally Prime</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Accounting Fundamentals</td>
+                    <td>Included</td>
+                    <td class="adv">Included (Advanced)</td>
+                </tr>
+                <tr>
+                    <td>Voucher Entry &amp; Inventory</td>
+                    <td>Basic Level</td>
+                    <td class="adv">Multi-location &amp; Batches</td>
+                </tr>
+                <tr>
+                    <td>Taxation (GST &amp; TDS)</td>
+                    <td>Overview</td>
+                    <td class="adv">Full E-Invoicing &amp; Returns</td>
+                </tr>
+                <tr>
+                    <td>Payroll &amp; Costing</td>
+                    <td>Not Covered</td>
+                    <td class="adv">Full Payroll &amp; BOM</td>
+                </tr>
+                <tr>
+                    <td>Audit Trail &amp; Security Controls</td>
+                    <td>Basic Passwords</td>
+                    <td class="adv">User Roles &amp; Tally Audit</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="notes-footer">
+        <p>
+            © 2025 GTEC Jain Keerti Education |
+            Notes Prepared by <strong>Anas Sir</strong>
+        </p>
+    </footer>
+
+</body>
+</html>
